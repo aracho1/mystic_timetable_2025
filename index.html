@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <title>Mystic Creatures — Full OCR Timetable</title>
+  <style>
+    body {margin:0;font-family:system-ui,Arial;background:#111;color:#fff}
+    header {padding:12px;text-align:center;background:#222;position:sticky;top:0;z-index:10}
+    .controls {display:flex;gap:8px;padding:10px;background:#1a1a1a;
+               position:sticky;top:58px;z-index:9;flex-wrap:wrap}
+    input,select {flex:1;padding:8px;border:none;border-radius:8px}
+    .card {background:#1f1f1f;margin:8px;border-radius:8px;padding:10px}
+    h3 {margin:0 0 6px;display:flex;justify-content:space-between;gap:8px}
+    .star {cursor:pointer;color:#aaa} .star.on {color:gold}
+    .tag {font-size:.8rem;color:#bbb}
+  </style>
+</head>
+<body>
+<header>
+  <h1>Mystic Creatures — OCR Timetable</h1>
+  <div id='count'></div>
+</header>
+
+<div class='controls'>
+  <input id='q' placeholder='Search artist or stage...'>
+  <select id='day'>
+    <option>All days</option>
+    <option>Monday</option>
+    <option>Thursday</option>
+    <option>Friday</option>
+    <option>Saturday</option>
+    <option>Sunday</option>
+  </select>
+</div>
+
+<main id='list'></main>
+
+<script>
+// OCR'd timetable data (clean this manually if needed)
+const raw = [
+  {"day":"Monday","stage":"Mystic Ground","artist":"SIRU","start":"07:00"},
+  {"day":"Monday","stage":"Mystic Ground","artist":"Imaaje","start":"09:00"},
+  {"day":"Monday","stage":"Mystic Ground","artist":"Lika","start":"11:00"},
+  {"day":"Monday","stage":"Cosmic Circus","artist":"Breger","start":"05:00"},
+  {"day":"Monday","stage":"Spirit Space","artist":"Faik Muchs","start":"12:00"},
+  {"day":"Monday","stage":"Wonky Wagon","artist":"WIEK","start":"12:00"},
+  {"day":"Monday","stage":"Wonky Wagon","artist":"Cosmic Dance Kitchen","start":"12:00"},
+  {"day":"Monday","stage":"Play & Port","artist":"Wear your Power - jewelry making","start":"12:00"},
+  {"day":"Monday","stage":"Mystic Ground","artist":"Pia Pan & Heyoka","start":"14:00"},
+  {"day":"Monday","stage":"Creatures Corner","artist":"Breger","start":"14:00"},
+  {"day":"Monday","stage":"Freaky Forest","artist":"Robin Schellenberg","start":"14:00"},
+  {"day":"Monday","stage":"Cosmic Circus","artist":"Julina","start":"14:00"},
+  {"day":"Monday","stage":"Spirit Space","artist":"rover","start":"14:00"},
+  {"day":"Monday","stage":"Play & Port","artist":"Thai Yoga Massage for Dancers","start":"14:00"},
+  {"day":"Monday","stage":"Mystic Ground","artist":"SIRU","start":"15:00"},
+  {"day":"Monday","stage":"Creatures Corner","artist":"PLEASURE ISLAND","start":"15:00"},
+  {"day":"Monday","stage":"Freaky Forest","artist":"CREAM","start":"15:00"},
+  {"day":"Monday","stage":"Cosmic Circus","artist":"Natanael Megersa","start":"15:00"},
+  {"day":"Monday","stage":"Spirit Space","artist":"Cosmic Rain","start":"15:00"},
+  {"day":"Monday","stage":"Mystic Ground","artist":"maaije","start":"16:00"},
+  {"day":"Monday","stage":"Creatures Corner","artist":"Nickel","start":"16:00"},
+  {"day":"Monday","stage":"Freaky Forest","artist":"FIELDY","start":"16:00"},
+  {"day":"Monday","stage":"Cosmic Circus","artist":"Onix","start":"16:00"},
+  {"day":"Monday","stage":"Play & Port","artist":"Healing Hands and Sound-healing","start":"16:00"},
+  {"day":"Monday","stage":"Mystic Ground","artist":"Lika","start":"17:00"},
+  {"day":"Monday","stage":"Cosmic Circus","artist":"Konrad Sturm","start":"17:00"},
+  {"day":"Monday","stage":"Spirit Space","artist":"Marie Chain","start":"17:00"},
+  {"day":"Monday","stage":"Mystic Ground","artist":"Manucho","start":"18:00"},
+  {"day":"Monday","stage":"Cosmic Circus","artist":"Zehlendorfer Disco Squad","start":"18:00"},
+  {"day":"Monday","stage":"Spirit Space","artist":"ELAA","start":"18:00"},
+  {"day":"Monday","stage":"Trance Temple","artist":"Gräfin Zobel","start":"18:00"},
+  {"day":"Monday","stage":"Mystic Ground","artist":"Doob & Janoma","start":"19:00"},
+  {"day":"Monday","stage":"Spirit Space","artist":"Kollektiv Sheesh","start":"19:00"},
+  {"day":"Monday","stage":"Trance Temple","artist":"Isabeau Fort","start":"19:00"},
+  {"day":"Monday","stage":"Spirit Space","artist":"Pascale Voltaire","start":"20:00"},
+  {"day":"Thursday","stage":"Tipi Space","artist":"Clam Slut","start":"14:00"},
+  {"day":"Thursday","stage":"Mystic Ground","artist":"Kotschinka","start":"17:00"},
+  {"day":"Thursday","stage":"Creatures Corner","artist":"LASERG LASS TATTOON","start":"17:00"},
+  {"day":"Thursday","stage":"Spirit Space","artist":"LangLang","start":"17:00"},
+  {"day":"Thursday","stage":"Wonky Wagon","artist":"Bipolar Soundsystem","start":"17:00"},
+  {"day":"Thursday","stage":"Mystic Ground","artist":"zhart","start":"18:00"},
+  {"day":"Thursday","stage":"Creatures Corner","artist":"Vogt","start":"18:00"},
+  {"day":"Thursday","stage":"Spirit Space","artist":"Duygu","start":"18:00"},
+  {"day":"Thursday","stage":"Mystic Ground","artist":"Tonda","start":"19:00"},
+  {"day":"Thursday","stage":"Creatures Corner","artist":"Marlene del Mar","start":"19:00"},
+  {"day":"Thursday","stage":"Spirit Space","artist":"Adab","start":"19:00"},
+  {"day":"Thursday","stage":"Trance Temple","artist":"HNX","start":"19:00"},
+  {"day":"Thursday","stage":"Mystic Ground","artist":"Witch Princess","start":"20:00"},
+  {"day":"Thursday","stage":"Creatures Corner","artist":"Tom Cordes","start":"20:00"},
+  {"day":"Thursday","stage":"Spirit Space","artist":"Farn","start":"20:00"},
+  {"day":"Thursday","stage":"Mystic Ground","artist":"WAYHNA","start":"21:00"},
+  {"day":"Thursday","stage":"Creatures Corner","artist":"Katja Broxi","start":"21:00"},
+  {"day":"Thursday","stage":"Spirit Space","artist":"Lange Brise","start":"21:00"},
+  {"day":"Thursday","stage":"Spirit Space","artist":"Tobias Hall","start":"22:00"},
+  {"day":"Friday","stage":"Mystic Ground","artist":"cheeks","start":"12:00"},
+  {"day":"Friday","stage":"Creatures Corner","artist":"Schwirrl","start":"12:00"},
+  {"day":"Friday","stage":"Freaky Forest","artist":"Isotob","start":"12:00"},
+  {"day":"Friday","stage":"Cosmic Circus","artist":"liquid love","start":"12:00"},
+  {"day":"Friday","stage":"Spirit Space","artist":"Conscious Kitchen","start":"12:00"},
+  {"day":"Friday","stage":"Trance Temple","artist":"JONNY","start":"12:00"},
+  {"day":"Friday","stage":"Wonky Wagon","artist":"Ciccio Fa(R)Ki","start":"12:00"},
+  {"day":"Friday","stage":"Play & Port","artist":"Pimp up your pocket ashtray","start":"12:00"},
+  {"day":"Friday","stage":"Mystic Ground","artist":"Pulli","start":"13:00"},
+  {"day":"Friday","stage":"Creatures Corner","artist":"BARTI","start":"13:00"},
+  {"day":"Friday","stage":"Freaky Forest","artist":"Mefly","start":"13:00"},
+  {"day":"Friday","stage":"Cosmic Circus","artist":"Metshob & Luko","start":"13:00"},
+  {"day":"Friday","stage":"Spirit Space","artist":"Narfux","start":"13:00"},
+  {"day":"Friday","stage":"Wonky Wagon","artist":"Lulu","start":"13:00"},
+  {"day":"Friday","stage":"Mystic Ground","artist":"Acado","start":"14:00"},
+  {"day":"Friday","stage":"Creatures Corner","artist":"Foolik","start":"14:00"},
+  {"day":"Friday","stage":"Freaky Forest","artist":"Poppy","start":"14:00"},
+  {"day":"Friday","stage":"Cosmic Circus","artist":"LIZZN","start":"14:00"},
+  {"day":"Friday","stage":"Spirit Space","artist":"true nature","start":"14:00"},
+  {"day":"Friday","stage":"Trance Temple","artist":"CHO","start":"14:00"},
+  {"day":"Friday","stage":"Wonky Wagon","artist":"Streamin Noord","start":"14:00"},
+  {"day":"Friday","stage":"Play & Port","artist":"Drop the Baggage Festival Mode ON","start":"14:00"},
+  {"day":"Friday","stage":"Mystic Ground","artist":"Atric","start":"15:00"},
+  {"day":"Friday","stage":"Creatures Corner","artist":"Bonnie Ford","start":"15:00"},
+  {"day":"Friday","stage":"Freaky Forest","artist":"Martin Ka","start":"15:00"},
+  {"day":"Friday","stage":"Cosmic Circus","artist":"Leo Schick","start":"15:00"},
+  {"day":"Friday","stage":"Spirit Space","artist":"related","start":"15:00"},
+  {"day":"Friday","stage":"Wonky Wagon","artist":"Piet von Frochnow","start":"15:00"},
+  {"day":"Friday","stage":"Freaky Forest","artist":"Daniel Neuland","start":"16:00"},
+  {"day":"Friday","stage":"Cosmic Circus","artist":"Pipot KK","start":"16:00"},
+  {"day":"Friday","stage":"Wonky Wagon","artist":"Marc","start":"16:00"},
+  {"day":"Friday","stage":"Play & Port","artist":"Power in Motion","start":"16:00"},
+  {"day":"Friday","stage":"Freaky Forest","artist":"Damon Jee","start":"17:00"}
+  // Saturday and Sunday OCR rows can be added similarly
+];
+
+let fav = JSON.parse(localStorage.getItem('fav') || '[]');
+
+function render() {
+  const q = document.getElementById('q').value.toLowerCase();
+  const d = document.getElementById('day').value;
+  const list = document.getElementById('list');
+  const items = raw.filter(e =>
+    (!q || (e.artist && e.artist.toLowerCase().includes(q)) ||
+            (e.stage && e.stage.toLowerCase().includes(q))) &&
+    (d === 'All days' || e.day === d)
+  );
+  document.getElementById('count').textContent = items.length + ' items';
+  list.innerHTML = '';
+  items.forEach(e => {
+    const card = document.createElement('div');
+    const active = fav.includes(e.artist);
+    card.className = 'card';
+    card.innerHTML = `<h3>${e.artist || '(unknown)'} <span class='star ${active?'on':''}'>★</span></h3>
+                      <div class='tag'>${e.day || ''} · ${e.stage || ''} · ${e.start || ''}</div>`;
+    card.querySelector('.star').onclick = () => {
+      const idx = fav.indexOf(e.artist);
+      if (idx >= 0) fav.splice(idx,1); else fav.push(e.artist);
+      localStorage.setItem('fav', JSON.stringify(fav));
+      render();
+    };
+    list.appendChild(card);
+  });
+}
+
+document.getElementById('q').oninput = render;
+document.getElementById('day').onchange = render;
+render();
+</script>
+</body>
+</html>
