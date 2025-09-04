@@ -291,299 +291,307 @@
 </div>
 
 <script>
-    const festivalData = {
-        "Today": {
-            "Creatures Corner 🧙🏼‍♂️": [
-                {time: "17:00", artist: "Katschinka"},
-                {time: "19:30", artist: "zhart"},
-                {time: "22:00", artist: "Tonda"}
-            ],
-            "Trance Temple ⛩️": [
-                {time: "18:00", artist: "KLATTE"},
-                {time: "19:30", artist: "LUPA Charleen Herzig"},
-                {time: "21:00", artist: "HNX"},
-                {time: "22:30", artist: "Amo Hanne B"}
-            ],
-            "Freaky Forest 🌲": [
-                {time: "18:00", artist: "LABERG b2b TAMTOOMI"},
-                {time: "20:00", artist: "Vogti"},
-                {time: "22:00", artist: "Marlene del Mar"}
-            ]
-        },
-        "Friday, September 5": {
-            "Creatures Corner 🧙🏼‍♂️": [
-                {time: "00:30", artist: "Witch Princess"},
-                {time: "03:30", artist: "WAYHNA"},
-                {time: "06:00", artist: "closing for a break", isBreak: true},
-                {time: "11:00", artist: "neeks"},
-                {time: "13:00", artist: "Pulli"},
-                {time: "15:00", artist: "Acado"},
-                {time: "17:00", artist: "Atric"},
-                {time: "19:00", artist: "Deep Ändi"},
-                {time: "20:00", artist: "R3NATA"},
-                {time: "22:00", artist: "NUAH"},
-                {time: "23:00", artist: "Sahra Bass"}
-            ],
-            "Trance Temple ⛩️": [
-                {time: "00:00", artist: "Antonym"},
-                {time: "01:30", artist: "Bélavie"},
-                {time: "03:00", artist: "jojogigirl SACID"},
-                {time: "04:30", artist: "Blossmbae"},
-                {time: "06:00", artist: "closing for a break", isBreak: true},
-                {time: "18:00", artist: "cbr Dr.Wiesl"},
-                {time: "19:30", artist: "jeanska bbymeister"},
-                {time: "21:00", artist: "subga Christopher Kono"},
-                {time: "22:30", artist: "ONNY CHO"}
-            ],
-            "Freaky Forest 🌲": [
-                {time: "00:00", artist: "Tom Cordes"},
-                {time: "02:00", artist: "Kolja Broxi"},
-                {time: "04:00", artist: "Schmackofatz & Spinneratz"},
-                {time: "06:00", artist: "closing for a break", isBreak: true},
-                {time: "16:30", artist: "Schwirri b2b BARTi"},
-                {time: "19:00", artist: "Foolik"},
-                {time: "21:00", artist: "Rafa'EL"},
-                {time: "22:00", artist: "Bonnie Ford"}
-            ],
-            "Cosmic Circus 🎪": [
-                {time: "12:00", artist: "Isotob"},
-                {time: "14:00", artist: "Mcfly"},
-                {time: "16:00", artist: "Poppy"},
-                {time: "18:00", artist: "FERNN"},
-                {time: "19:00", artist: "Martin Ka"},
-                {time: "21:00", artist: "Daniel Neuland"},
-                {time: "23:00", artist: "Damon Jee"}
-            ],
-            "Funky Float 🏖️": [
-                {time: "15:00", artist: "liquid luve"},
-                {time: "17:00", artist: "Motshabi & Luko"},
-                {time: "19:00", artist: "LIZZN"},
-                {time: "21:00", artist: "Leo Schick"},
-                {time: "23:00", artist: "Pippi KK"}
-            ],
-            "Mystic Ground 🪬": [
-                {time: "17:00", artist: "BadWolf"},
-                {time: "19:00", artist: "Khainz"},
-                {time: "21:00", artist: "TOWNSHIP REBELLION"},
-                {time: "23:00", artist: "Taberia"}
-            ]
-        },
-        "Saturday, September 6": {
-            "Creatures Corner 🧙🏼‍♂️": [
-                {time: "01:00", artist: "REYNEKE"},
-                {time: "02:00", artist: "Maria Theresia von Eberg"},
-                {time: "04:00", artist: "Corios"},
-                {time: "06:00", artist: "Überhaupt & Außerdem"},
-                {time: "08:00", artist: "tadoh"},
-                {time: "10:00", artist: "seyde x awn x fotis"},
-                {time: "11:00", artist: "Pacaya"},
-                {time: "13:00", artist: "Lotte Ahoi"},
-                {time: "15:00", artist: "Martha van Straaten"},
-                {time: "17:00", artist: "neoBeo"},
-                {time: "19:00", artist: "Haensen&Gretel"},
-                {time: "21:00", artist: "Flave"},
-                {time: "22:00", artist: "Horst Haller"}
-            ],
-            "Trance Temple ⛩️": [
-                {time: "00:00", artist: "DETOXX"},
-                {time: "01:30", artist: "DJ Athina YËDM"},
-                {time: "03:00", artist: "Limoncello DJ Flink"},
-                {time: "04:30", artist: "Balkhausen alemiko"},
-                {time: "06:00", artist: "closing for a break", isBreak: true},
-                {time: "18:00", artist: "Jini Piju"},
-                {time: "19:30", artist: "myzelia"},
-                {time: "21:00", artist: "4NOUK"},
-                {time: "22:00", artist: "two girls one mom"},
-                {time: "23:00", artist: "Millie Forsberg"}
-            ],
-            "Freaky Forest 🌲": [
-                {time: "00:00", artist: "SILSAN"},
-                {time: "02:00", artist: "DLZ b2b Phillinger"},
-                {time: "04:00", artist: "CHIEF TORKEL & SAVETHEDISCO"},
-                {time: "06:00", artist: "junoia"},
-                {time: "08:00", artist: "closing for a break", isBreak: true},
-                {time: "11:00", artist: "Gina Scirocco"},
-                {time: "13:00", artist: "Lamara"},
-                {time: "15:00", artist: "Temple Tears"},
-                {time: "17:00", artist: "Mad Son"},
-                {time: "19:00", artist: "Blake Strange"},
-                {time: "21:00", artist: "RAUSCHHAUS"},
-                {time: "23:00", artist: "Shabiki"}
-            ],
-            "Cosmic Circus 🎪": [
-                {time: "01:00", artist: "Moritz Butschek"},
-                {time: "03:00", artist: "Tummetott & DirdyGerdi"},
-                {time: "05:00", artist: "Sassafras Tree"},
-                {time: "07:00", artist: "jungspund"},
-                {time: "09:00", artist: "closing for a break", isBreak: true},
-                {time: "10:00", artist: "Projekt Kiezchor"},
-                {time: "11:00", artist: "enmaniguada"},
-                {time: "13:00", artist: "closing for a break", isBreak: true},
-                {time: "13:30", artist: "AFAR"},
-                {time: "14:30", artist: "Swaytone"},
-                {time: "16:30", artist: "Kahl & Kæmena"},
-                {time: "18:30", artist: "Fabian Krooss"},
-                {time: "20:30", artist: "Oberst & Buchner"},
-                {time: "22:30", artist: "Karlo Kurbel"}
-            ],
-            "Funky Float 🏖️": [
-                {time: "01:00", artist: "iamhannahmai"},
-                {time: "03:00", artist: "closing for a break", isBreak: true},
-                {time: "10:00", artist: "Prinzhessin"},
-                {time: "12:00", artist: "Nehbel"},
-                {time: "14:00", artist: "Rafaelo"},
-                {time: "16:00", artist: "FRYSCH"},
-                {time: "18:00", artist: "Rob Roberts"},
-                {time: "20:00", artist: "Hilden"},
-                {time: "22:00", artist: "Ligal Tamir"}
-            ],
-            "Mystic Ground 🪬": [
-                {time: "01:00", artist: "Jan Oberlaender"},
-                {time: "03:00", artist: "Pauli Pocket"},
-                {time: "05:00", artist: "SYN3K"},
-                {time: "07:00", artist: "closing for a break", isBreak: true},
-                {time: "12:30", artist: "ShangoMx"},
-                {time: "14:30", artist: "El Mundo & Zazou"},
-                {time: "16:00", artist: "Oliver Koletzki"},
-                {time: "18:00", artist: "Marcus Meinhardt"},
-                {time: "20:00", artist: "Naicet & Elias Goldmund"},
-                {time: "22:00", artist: "Konfusia"}
-            ]
-        },
-        "Sunday, September 7": {
-            "Creatures Corner 🧙🏼‍♂️": [
-                {time: "00:00", artist: "Frida Darko"},
-                {time: "02:00", artist: "UREM"},
-                {time: "04:00", artist: "Najesh & Artišoko"},
-                {time: "06:00", artist: "Kapoor"},
-                {time: "08:00", artist: "Laaar"},
-                {time: "09:00", artist: "WOJTEK"},
-                {time: "10:00", artist: "Faul & Spaeth"},
-                {time: "11:00", artist: "éner & stelzenläufer"},
-                {time: "13:00", artist: "Heimlich Knüller"},
-                {time: "15:45", artist: "closing for a break", isBreak: true},
-                {time: "16:00", artist: "Monkyman"},
-                {time: "17:00", artist: "CHOMBA"},
-                {time: "18:00", artist: "Borella & Robin Dey"},
-                {time: "20:00", artist: "Mira & Chris Schwarzwälder"},
-                {time: "22:00", artist: "Tvísker"}
-            ],
-            "Trance Temple ⛩️": [
-                {time: "00:00", artist: "ELOISA"},
-                {time: "01:30", artist: "Shanixx"},
-                {time: "03:00", artist: "Alexa Fluor"},
-                {time: "04:30", artist: "elfie"},
-                {time: "06:00", artist: "closing for a break", isBreak: true},
-                {time: "18:00", artist: "Ponybarker"},
-                {time: "19:30", artist: "Undercover Junkie"},
-                {time: "21:00", artist: "Ivana Parti"},
-                {time: "23:00", artist: "Praise"}
-            ],
-            "Freaky Forest 🌲": [
-                {time: "01:00", artist: "TiM TASTE"},
-                {time: "03:00", artist: "Rad.Lez"},
-                {time: "05:00", artist: "JaMoll b2b Marco Liebreiz"},
-                {time: "07:00", artist: "Lowrex"},
-                {time: "09:00", artist: "Phauna"},
-                {time: "11:00", artist: "Chips + Sekt"},
-                {time: "13:00", artist: "Sydka & Bawab"},
-                {time: "15:00", artist: "Bayawaka"},
-                {time: "17:00", artist: "Joseph Disco"},
-                {time: "19:00", artist: "Sabura"},
-                {time: "21:00", artist: "Rachel Raw"},
-                {time: "23:00", artist: "TAQTIK b2b Onory"}
-            ],
-            "Cosmic Circus 🎪": [
-                {time: "00:30", artist: "Ezio Aguiar"},
-                {time: "02:30", artist: "MarMori"},
-                {time: "04:30", artist: "Wanda Wild"},
-                {time: "06:30", artist: "ELIXIR"},
-                {time: "08:30", artist: "Sven Thomas"},
-                {time: "10:30", artist: "closing for a break", isBreak: true},
-                {time: "11:30", artist: "Crescendo Planet"},
-                {time: "12:30", artist: "closing for a break", isBreak: true},
-                {time: "13:00", artist: "SingSisySing 🛠"},
-                {time: "14:00", artist: "Joanna Lenta"},
-                {time: "16:00", artist: "Saraabb"},
-                {time: "17:00", artist: "Joep Mencke"},
-                {time: "19:00", artist: "Mimi Love"},
-                {time: "21:00", artist: "Elias Doré"},
-                {time: "23:00", artist: "Mona Pirzad"}
-            ],
-            "Funky Float 🏖️": [
-                {time: "00:00", artist: "Nora Wolkenstein"},
-                {time: "02:00", artist: "Frau Kaufmann b2b Dydaa Forne"},
-                {time: "04:00", artist: "closing for a break", isBreak: true},
-                {time: "11:00", artist: "Yusuf Lemone"},
-                {time: "14:00", artist: "Cara Carpaccio"},
-                {time: "16:00", artist: "Matteo Solero"},
-                {time: "18:00", artist: "ciao 3lla"},
-                {time: "20:00", artist: "Zerya"},
-                {time: "22:00", artist: "Lili Hauser"}
-            ],
-            "Mystic Ground 🪬": [
-                {time: "00:00", artist: "Flanko"},
-                {time: "02:00", artist: "Lampé"},
-                {time: "04:00", artist: "Rick Pier O'Neil"},
-                {time: "06:00", artist: "closing for a break", isBreak: true},
-                {time: "12:00", artist: "Soso Klein"},
-                {time: "14:00", artist: "Just Emma"},
-                {time: "16:00", artist: "Melbo & Falke"},
-                {time: "18:00", artist: "Aio"},
-                {time: "20:00", artist: "Oliver Huntemann"},
-                {time: "22:00", artist: "Maurice Mino & sin:port"}
-            ]
-        },
-        "Monday, September 8": {
-            "Creatures Corner 🧙🏼‍♂️": [
-                {time: "00:00", artist: "bīsu"},
-                {time: "02:00", artist: "Pia Pan & Heyoka"},
-                {time: "04:00", artist: "SIRU"},
-                {time: "06:00", artist: "maaje"},
-                {time: "08:00", artist: "thea & schtu"},
-                {time: "09:00", artist: "Cedric Scheibel"},
-                {time: "10:00", artist: "Lika"},
-                {time: "12:00", artist: "Manucho"},
-                {time: "14:00", artist: "Doob & Janoma"},
-                {time: "17:00", artist: "closing", isBreak: true}
-            ],
-            "Trance Temple ⛩️": [
-                {time: "01:00", artist: "multivitaminmarie"},
-                {time: "03:00", artist: "FAballert icouldfly"},
-                {time: "04:30", artist: "DJ Holgersson"},
-                {time: "06:00", artist: "closing for a break", isBreak: true},
-                {time: "13:00", artist: "ÉLAA"},
-                {time: "15:00", artist: "J.WOCKENFUSS"},
-                {time: "16:00", artist: "Kollektiv Sheesh"},
-                {time: "18:00", artist: "Pascale Voltaire"},
-                {time: "20:00", artist: "closing", isBreak: true}
-            ],
-            "Freaky Forest 🌲": [
-                {time: "01:00", artist: "Breger"},
-                {time: "03:00", artist: "PLEASURE ISLAND"},
-                {time: "05:00", artist: "Nickel"},
-                {time: "06:00", artist: "closing", isBreak: true}
-            ],
-            "Cosmic Circus 🎪": [
-                {time: "01:00", artist: "Robin Schellenberg"},
-                {time: "03:00", artist: "CREAM"},
-                {time: "05:00", artist: "F.I.E.L.D.Y"},
-                {time: "07:00", artist: "closing", isBreak: true}
-            ],
-            "Funky Float 🏖️": [
-                {time: "00:00", artist: "Lulu Malina"},
-                {time: "02:00", artist: "Natanael Megersa"},
-                {time: "04:00", artist: "Onix"},
-                {time: "06:00", artist: "Konrad Sturm"},
-                {time: "09:00", artist: "Zehlendorfer Disco Squad"},
-                {time: "12:00", artist: "closing", isBreak: true}
-            ],
-            "Mystic Ground 🪬": [
-                {time: "00:00", artist: "TraumaMia"},
-                {time: "02:00", artist: "closing", isBreak: true}
-            ]
-        }
-    };
+  const festivalData = {
+    "Thursday": {
+        "Creatures Corner 🧙🏼‍♂️": [
+            {time: "17:00", artist: "Katschinka"},
+            {time: "19:30", artist: "zhart"},
+            {time: "22:00", artist: "Tonda"}
+        ],
+        "Trance Temple ⛩️": [
+            {time: "18:00", artist: "KLATTE"},
+            {time: "19:30", artist: "LUPA Charleen Herzig"},
+            {time: "21:00", artist: "HNX"},
+            {time: "22:30", artist: "Amo Hanne B"}
+        ],
+        "Freaky Forest 🌲": [
+            {time: "18:00", artist: "LABERG b2b TAMTOOMI"},
+            {time: "20:00", artist: "Vogti"},
+            {time: "22:00", artist: "Marlene del Mar"}
+        ],
+        "Spirit Space ✅": [
+            {time: "17:00", artist: "Opening Ceremony 🛠"},
+            {time: "18:00", artist: "LangLang"},
+            {time: "20:00", artist: "Duygu"},
+            {time: "22:00", artist: "closing for a break", isBreak: true},
+            {time: "22:15", artist: "Audae"},
+            {time: "23:30", artist: "Farn"}
+        ]
+    },
+    "Friday, September 5": {
+        "Creatures Corner 🧙🏼‍♂️": [
+            {time: "00:30", artist: "Witch Princess"},
+            {time: "03:30", artist: "WAYHNA"},
+            {time: "06:00", artist: "closing for a break", isBreak: true},
+            {time: "11:00", artist: "neeks"},
+            {time: "13:00", artist: "Pulli"},
+            {time: "15:00", artist: "Acado"},
+            {time: "17:00", artist: "Atric"},
+            {time: "19:00", artist: "Deep Ändi"},
+            {time: "20:00", artist: "R3NATA"},
+            {time: "22:00", artist: "NUAH"},
+            {time: "23:00", artist: "Sahra Bass"}
+        ],
+        "Trance Temple ⛩️": [
+            {time: "00:00", artist: "Antonym"},
+            {time: "01:30", artist: "Bélavie"},
+            {time: "03:00", artist: "jojogigirl SACID"},
+            {time: "04:30", artist: "Blossmbae"},
+            {time: "06:00", artist: "closing for a break", isBreak: true},
+            {time: "18:00", artist: "cbr Dr.Wiesl"},
+            {time: "19:30", artist: "jeanska bbymeister"},
+            {time: "21:00", artist: "subga Christopher Kono"},
+            {time: "22:30", artist: "ONNY CHO"}
+        ],
+        "Freaky Forest 🌲": [
+            {time: "00:00", artist: "Tom Cordes"},
+            {time: "02:00", artist: "Kolja Broxi"},
+            {time: "04:00", artist: "Schmackofatz & Spinneratz"},
+            {time: "06:00", artist: "closing for a break", isBreak: true},
+            {time: "16:30", artist: "Schwirri b2b BARTi"},
+            {time: "19:00", artist: "Foolik"},
+            {time: "21:00", artist: "Rafa'EL"},
+            {time: "22:00", artist: "Bonnie Ford"}
+        ],
+        "Cosmic Circus 🎪": [
+            {time: "12:00", artist: "Isotob"},
+            {time: "14:00", artist: "Mcfly"},
+            {time: "16:00", artist: "Poppy"},
+            {time: "18:00", artist: "FERNN"},
+            {time: "19:00", artist: "Martin Ka"},
+            {time: "21:00", artist: "Daniel Neuland"},
+            {time: "23:00", artist: "Damon Jee"}
+        ],
+        "Funky Float 🏖️": [
+            {time: "15:00", artist: "liquid luve"},
+            {time: "17:00", artist: "Motshabi & Luko"},
+            {time: "19:00", artist: "LIZZN"},
+            {time: "21:00", artist: "Leo Schick"},
+            {time: "23:00", artist: "Pippi KK"}
+        ],
+        "Mystic Ground 🪬": [
+            {time: "17:00", artist: "BadWolf"},
+            {time: "19:00", artist: "Khainz"},
+            {time: "21:00", artist: "TOWNSHIP REBELLION"},
+            {time: "23:00", artist: "Taberia"}
+        ],
+        "Spirit Space ✅": [
+            {time: "01:30", artist: "Lange Brise"},
+            {time: "03:30", artist: "closing for a break", isBreak: true},
+            {time: "04:00", artist: "SIA MOAN"},
+            {time: "05:00", artist: "Tobias Hall"},
+            {time: "07:00", artist: "closing for a break", isBreak: true},
+            {time: "12:00", artist: "Cosmic Soundscape 🛠"},
+            {time: "13:00", artist: "Heart Rising Flow 🛠"},
+            {time: "14:00", artist: "closing for a break", isBreak: true},
+            {time: "14:30", artist: "Decolonizing Spirituality – Spiritual Practice as a Liberatory Act 🛠"},
+            {time: "16:00", artist: "Conscious Knutschen 🛠"},
+            {time: "18:00", artist: "closing for a break", isBreak: true},
+            {time: "18:30", artist: "The Dropdown Menu"},
+            {time: "19:30", artist: "Narfux"},
+            {time: "21:30", artist: "true nature"},
+            {time: "23:30", artist: "meløtea"}
+        ]
+    },
+    "Saturday, September 6": {
+        "Creatures Corner 🧙🏼‍♂️": [
+            {time: "01:00", artist: "REYNEKE"},
+            {time: "02:00", artist: "Maria Theresia von Eberg"},
+            {time: "04:00", artist: "Corios"},
+            {time: "06:00", artist: "Überhaupt & Außerdem"},
+            {time: "08:00", artist: "tadoh"},
+            {time: "10:00", artist: "seyde x awn x fotis"},
+            {time: "11:00", artist: "Pacaya"},
+            {time: "13:00", artist: "Lotte Ahoi"},
+            {time: "15:00", artist: "Martha van Straaten"},
+            {time: "17:00", artist: "neoBeo"},
+            {time: "19:00", artist: "Haensen&Gretel"},
+            {time: "21:00", artist: "Flave"},
+            {time: "22:00", artist: "Horst Haller"}
+        ],
+        "Trance Temple ⛩️": [
+            {time: "00:00", artist: "DETOXX"},
+            {time: "01:30", artist: "DJ Athina YËDM"},
+            {time: "03:00", artist: "Limoncello DJ Flink"},
+            {time: "04:30", artist: "Balkhausen alemiko"},
+            {time: "06:00", artist: "closing for a break", isBreak: true},
+            {time: "18:00", artist: "Jini Piju"},
+            {time: "19:30", artist: "myzelia"},
+            {time: "21:00", artist: "4NOUK"},
+            {time: "22:00", artist: "two girls one mom"},
+            {time: "23:00", artist: "Millie Forsberg"}
+        ],
+        "Freaky Forest 🌲": [
+            {time: "00:00", artist: "SILSAN"},
+            {time: "02:00", artist: "DLZ b2b Phillinger"},
+            {time: "04:00", artist: "CHIEF TORKEL & SAVETHEDISCO"},
+            {time: "06:00", artist: "junoia"},
+            {time: "08:00", artist: "closing for a break", isBreak: true},
+            {time: "11:00", artist: "Gina Scirocco"},
+            {time: "13:00", artist: "Lamara"},
+            {time: "15:00", artist: "Temple Tears"},
+            {time: "17:00", artist: "Mad Son"},
+            {time: "19:00", artist: "Blake Strange"},
+            {time: "21:00", artist: "RAUSCHHAUS"},
+            {time: "23:00", artist: "Shabiki"}
+        ],
+        "Cosmic Circus 🎪": [
+            {time: "01:00", artist: "Moritz Butschek"},
+            {time: "03:00", artist: "Tummetott & DirdyGerdi"},
+            {time: "05:00", artist: "Sassafras Tree"},
+            {time: "07:00", artist: "jungspund"},
+            {time: "09:00", artist: "closing for a break", isBreak: true},
+            {time: "10:00", artist: "Projekt Kiezchor"},
+            {time: "11:00", artist: "enmaniguada"},
+            {time: "13:00", artist: "closing for a break", isBreak: true},
+            {time: "13:30", artist: "AFAR"},
+            {time: "14:30", artist: "Swaytone"},
+            {time: "16:30", artist: "Kahl & Kæmena"},
+            {time: "18:30", artist: "Fabian Krooss"},
+            {time: "20:30", artist: "Oberst & Buchner"},
+            {time: "22:30", artist: "Karlo Kurbel"}
+        ],
+        "Funky Float 🏖️": [
+            {time: "01:00", artist: "iamhannahmai"},
+            {time: "03:00", artist: "closing for a break", isBreak: true},
+            {time: "10:00", artist: "Prinzhessin"},
+            {time: "12:00", artist: "Nehbel"},
+            {time: "14:00", artist: "Rafaelo"},
+            {time: "16:00", artist: "FRYSCH"},
+            {time: "18:00", artist: "Rob Roberts"},
+            {time: "20:00", artist: "Hilden"},
+            {time: "22:00", artist: "Ligal Tamir"}
+        ],
+        "Mystic Ground 🪬": [
+            {time: "01:00", artist: "Jan Oberlaender"},
+            {time: "03:00", artist: "Pauli Pocket"},
+            {time: "05:00", artist: "SYN3K"},
+            {time: "07:00", artist: "closing for a break", isBreak: true},
+            {time: "12:30", artist: "ShangoMx"},
+            {time: "14:30", artist: "El Mundo & Zazou"},
+            {time: "16:00", artist: "Oliver Koletzki"},
+            {time: "18:00", artist: "Marcus Meinhardt"},
+            {time: "20:00", artist: "Naicet & Elias Goldmund"},
+            {time: "22:00", artist: "Konfusia"}
+        ],
+        "Spirit Space ✅": [
+            {time: "01:30", artist: "closing for a break", isBreak: true},
+            {time: "02:00", artist: "Akashic Records"},
+            {time: "03:00", artist: "Kaleidosloop"},
+            {time: "05:00", artist: "mømø"},
+            {time: "07:00", artist: "Boris Martel"},
+            {time: "08:00", artist: "Pianika"},
+            {time: "10:00", artist: "closing for a break", isBreak: true},
+            {time: "10:30", artist: "Nada Project 🛠"},
+            {time: "12:30", artist: "Contact Beyond Contact 🛠"},
+            {time: "14:30", artist: "closing for a break", isBreak: true},
+            {time: "15:00", artist: "Naked Tea Party"},
+            {time: "19:00", artist: "Ecstatic Dance 🛠"},
+            {time: "22:00", artist: "Andshe"},
+            {time: "23:00", artist: "closing for a break", isBreak: true},
+            {time: "23:45", artist: "Ane & Maria Kępisty"}
+        ]
+    },
+    // Sunday, September 7
+    "Sunday, September 7": {
+        "Creatures Corner 🧙🏼‍♂️": [
+            {time: "00:00", artist: "Frida Darko"},
+            {time: "02:00", artist: "UREM"},
+            {time: "04:00", artist: "Najesh & Artišoko"},
+            {time: "06:00", artist: "Kapoor"},
+            {time: "08:00", artist: "Laaar"},
+            {time: "09:00", artist: "WOJTEK"},
+            {time: "10:00", artist: "Faul & Spaeth"},
+            {time: "11:00", artist: "éner & stelzenläufer"},
+            {time: "13:00", artist: "Heimlich Knüller"},
+            {time: "15:45", artist: "closing for a break", isBreak: true},
+            {time: "16:00", artist: "Monkyman"},
+            {time: "17:00", artist: "CHOMBA"},
+            {time: "18:00", artist: "Borella & Robin Dey"},
+            {time: "20:00", artist: "Mira & Chris Schwarzwälder"},
+            {time: "22:00", artist: "Tvísker"}
+        ],
+        "Trance Temple ⛩️": [
+            {time: "00:00", artist: "ELOISA"},
+            {time: "01:30", artist: "Shanixx"},
+            {time: "03:00", artist: "Alexa Fluor"},
+            {time: "04:30", artist: "elfie"},
+            {time: "06:00", artist: "closing for a break", isBreak: true},
+            {time: "18:00", artist: "Ponybarker"},
+            {time: "19:30", artist: "Undercover Junkie"},
+            {time: "21:00", artist: "Ivana Parti"},
+            {time: "23:00", artist: "Praise"}
+        ],
+        "Freaky Forest 🌲": [
+            {time: "01:00", artist: "TiM TASTE"},
+            {time: "03:00", artist: "Rad.Lez"},
+            {time: "05:00", artist: "JaMoll b2b Marco Liebreiz"},
+            {time: "07:00", artist: "Lowrex"},
+            {time: "09:00", artist: "Phauna"},
+            {time: "11:00", artist: "Chips + Sekt"},
+            {time: "13:00", artist: "Sydka & Bawab"},
+            {time: "15:00", artist: "Bayawaka"},
+            {time: "17:00", artist: "Joseph Disco"},
+            {time: "19:00", artist: "Sabura"},
+            {time: "21:00", artist: "Rachel Raw"},
+            {time: "23:00", artist: "TAQTIK b2b Onory"}
+        ],
+        "Cosmic Circus 🎪": [
+            {time: "00:30", artist: "Ezio Aguiar"},
+            {time: "02:30", artist: "MarMori"},
+            {time: "04:00", artist: "Landhouse"}, // merged from Spirit Space
+            {time: "04:30", artist: "Wanda Wild"},
+            {time: "06:30", artist: "ELIXIR"},
+            {time: "08:30", artist: "Sven Thomas"},
+            {time: "10:30", artist: "closing for a break", isBreak: true},
+            {time: "11:30", artist: "Crescendo Planet"},
+            {time: "12:30", artist: "closing for a break", isBreak: true},
+            {time: "13:00", artist: "SingSisySing 🛠"},
+            {time: "14:00", artist: "Joanna Lenta"},
+            {time: "16:00", artist: "Saraabb"},
+            {time: "17:00", artist: "Joep Mencke"},
+            {time: "19:00", artist: "Mimi Love"},
+            {time: "21:00", artist: "Elias Doré"},
+            {time: "23:00", artist: "Mona Pirzad"}
+        ],
+        "Funky Float 🏖️": [
+            {time: "00:00", artist: "Luvus"},
+            {time: "02:00", artist: "closing for a break", isBreak: true},
+            {time: "08:30", artist: "Vincent Gericke"},
+            {time: "10:30", artist: "closing for a break", isBreak: true},
+            {time: "11:30", artist: "Journey to the Germanic Roots 🛠"},
+            {time: "13:00", artist: "One Living Body 🛠"},
+            {time: "14:30", artist: "The Art of Connection 🛠"},
+            {time: "16:30", artist: "closing for a break", isBreak: true},
+            {time: "17:00", artist: "Karukene"},
+            {time: "18:00", artist: "Circle of Joy - An Interactive Ceremonial Concert 🛠"},
+            {time: "21:00", artist: "closing for a break", isBreak: true},
+            {time: "21:45", artist: "Future3"},
+            {time: "22:45", artist: "closing for a break", isBreak: true},
+            {time: "23:00", artist: "FLVRS"}
+        ],
+        "Spirit Space ✅": [
+            {time: "00:30", artist: "LASKÀ"},
+            {time: "02:30", artist: "luçïd"},
+            {time: "04:00", artist: "Landhouse"},
+            {time: "06:00", artist: "closing for a break", isBreak: true},
+            {time: "06:30", artist: "Malü & Kalypsoul"},
+            {time: "07:30", artist: "ele"},
+            {time: "08:30", artist: "Vincent Gericke"},
+            {time: "10:30", artist: "closing for a break", isBreak: true},
+            {time: "11:30", artist: "Journey to the Germanic Roots 🛠"},
+            {time: "13:00", artist: "One Living Body 🛠"},
+            {time: "14:30", artist: "The Art of Connection 🛠"},
+            {time: "16:30", artist: "closing for a break", isBreak: true},
+            {time: "17:00", artist: "Karukene"},
+            {time: "18:00", artist: "Circle of Joy - An Interactive Ceremonial Concert 🛠"},
+            {time: "21:00", artist: "closing for a break", isBreak: true},
+            {time: "21:45", artist: "Future3"},
+            {time: "22:45", artist: "closing for a break", isBreak: true},
+            {time: "23:00", artist: "FLVRS"}
+        ]
+    }
+};
 
     let likedEvents = JSON.parse(localStorage.getItem('likedEvents') || '[]');
 
@@ -594,7 +602,8 @@
             'Freaky Forest 🌲': 'freaky-forest',
             'Cosmic Circus 🎪': 'cosmic-circus',
             'Funky Float 🏖️': 'funky-float',
-            'Mystic Ground 🪬': 'mystic-ground'
+            'Mystic Ground 🪬': 'mystic-ground',
+'Spirit Space': 'spirit-space'
         };
         return stageMap[stageName] || '';
     }
